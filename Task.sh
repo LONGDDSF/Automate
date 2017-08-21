@@ -1,10 +1,16 @@
-#!/bin/sh 
 
-cd 
+source ./SiYuanTask/config.sh
+source ./shell_privite_lib/pch.sh
 
-cd jjj
+shellPath="./SiYuanTask"
 
-echo "--->思源企业 - toon - ios版 - 名片模块 - 陈冬冬 - 任务指令列表"
+(f_echo)
+
+(f_echo)
+
+(f_echo)
+
+(f_echo "思源企业 - toon - ios版 - 名片模块 - 陈冬冬 - 任务指令列表")
 
 taskGroup="[
 			1、toon 项目 ，pod update
@@ -14,28 +20,31 @@ taskGroup="[
 			3、私有pod库 ， pod push
 			
 			4、私有pod库 ， 打包
-]"
 
-echo "\n --->$taskGroup"
+			]"
 
-read -p "--->请输入任务指令" taskID
+(f_echo "$taskGroup")
+
+(f_echo "请输入任务指令 [如：1]:")
+
+read taskID
 
 case $taskID in
 	
 	'1' )
-	source toon_pod_update.sh
+	source $shellPath/toon_pod_update.sh
 		;;
 
 	'2' )
-	source lib_pod_update.sh
+	source $shellPath/lib_pod_update.sh
 		;;
 
 	'3' )
-	source lib_pod_push.sh
+	source $shellPath/lib_pod_push.sh
 		;;
 
 	'4' )
-	source lib_package
+	source $shellPath/lib_package.sh
 		;;
 
 

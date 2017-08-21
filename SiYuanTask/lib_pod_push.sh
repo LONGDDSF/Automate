@@ -6,7 +6,7 @@ echo " ************************** 私有pod提交 ******************************
 
 arrowFlag=" \n ---->"
 
-rootPath='/Users/fiend/Documents/Siyuan/Libs'
+rootPath="$path_siyuan_lib"
 
 echo " $arrowFlag 当前根目录为"
 echo " $arrowFlag $rootPath"
@@ -46,14 +46,20 @@ if [[ -d $targetPath ]]; then
 		echo " $arrowFlag 当前tag 有 :"
 		git tag 
 
-		echo " $arrowFlag "
-		read -p " 请输入git tag 版本号 : " gitTagVertion
+		read -p "是否需要更新 git tag ？？？[y/n] ：" shouldUpdateTag
 
-		echo " $arrowFlag 更新git tag 到 $gitTagVertion"
-		git tag -a $gitTagVertion -m"$ProjectName - tag $gitTagVertion "
+		if [[ 'y' = $shouldUpdateTag]]; then
+
+			echo " $arrowFlag "
+			read -p " 请输入git tag 版本号 : " gitTagVertion
+
+			echo " $arrowFlag 更新git tag 到 $gitTagVertion"
+			git tag -a $gitTagVertion -m"$ProjectName - tag $gitTagVertion "
 		
-		echo " $arrowFlag  tag push "
-		git push origin --tags 
+			echo " $arrowFlag  tag push "
+			git push origin --tags 
+
+		fi		
 
 		echo " $arrowFlag "
 		read -p " 当前 $ProjectName，是否进行 pod push [y/n]:" isPodPush 

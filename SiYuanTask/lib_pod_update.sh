@@ -7,7 +7,7 @@ echo " \n
 #配置项目路径
 # ="/Users/fiend/Documents/toonProject/toonios/Toon"
 
-rootPath='/Users/fiend/Documents/Siyuan/Libs'
+rootPath="$path_siyuan_lib"
 
 arrowFlag="\n ----> "
 

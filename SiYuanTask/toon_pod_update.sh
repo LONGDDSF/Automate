@@ -8,10 +8,10 @@ echo " ************************** Toon工程 pod update ************************
 echo " $arrowFlag "
 read -p "请输入项目路径(1:Toon) : " ProjectPath
 
-case $ProjectPath in
+case "$ProjectPath" in
 	
 	'1' )
-	ProjectPath="/Users/fiend/Documents/toonProject/toonios/Toon"
+	ProjectPath="$path_toon"
 		;;
 esac
 

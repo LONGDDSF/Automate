@@ -1,5 +1,8 @@
 #!/bin/sh 
 
+source ./shell_tool/pch.sh
+
+
 echo " ******************* 私有pod库 打包 ***********************"
 
 rootPath='/Users/fiend/Documents/Siyuan/Libs'
@@ -13,7 +16,7 @@ function f_list_files ()
 	echo " $arrowFlag 目录存在，当前目录文件有 :"
 
 	tree -L 2 $p1 
-}
+}	
 
 
 function f_selTarget
