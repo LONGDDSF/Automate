@@ -1,6 +1,6 @@
 #!/bin/sh 
 
-echo " \n
+title=" \n
 		**************************** 私有库，CocoPods-package 打包 ***********************"
 
 
@@ -9,12 +9,6 @@ echo " \n
 
 #所有私有库的根目录
 rootPath="$path_siyuan_lib"
-
-function f_checkDir ()
-{
-	(f_echo "当前目录文件有")
-	tree -L 1 --sort=name $1
-}
 
 function f_selTarget
 {	
@@ -25,69 +19,44 @@ function f_selTarget
 	echo $targetName
 }
 
-function f_checkTagetIsAviliable ()
-{
-	path=$1
+# function f_checkTagetIsAviliable ()
+# {
+# 	path=$1
 
-	(f_echo "检测文件路径：" )
-	(f_echo "$path")
+# 	(f_echo "检测文件路径：" )
+# 	(f_echo "$path")
 
-	if [[ -d $path ]]; then
-			#statements
-			function f_list_files
-			{
-				(f_echo "目录存在，当前目录文件有 :")
+# 	if [[ -d $path ]]; then
+# 			#statements
+# 			function f_list_files
+# 			{
+# 				(f_echo "目录存在，当前目录文件有 :")
 			
-				tree -L 1 $path
-			}
+# 				tree -L 1 $path
+# 			}
 			
-			'f_list_files'
+# 			'f_list_files'
 
-			return 1	
-	else
+# 			return 1	
+# 	else
 
-			(f_echo "路径不存在")
+# 			(f_echo "路径不存在")
 			
-			return 0
-	fi	
-}
-
-function f_checkGitStatus
-{
-	(f_echo "查看当前Git 状态")
-	 
-	(git status)
-
-	read -p "请确认git status ,是否继续 [y/n] :" isGitStatusOk
-		
-	if [[ 'y' = $isGitStatusOk || '' = $isGitStatusOk ]]; then
-
-		return 1
-	else
-		return 0
-	fi
-}
-
-function f_git_stash
-{
-	(f_echo "保存更改到stash")
-	git stash
-
-	(f_echo "查看当前Git 状态")
-	git status
-}
+# 			return 0
+# 	fi	
+# }
 
 function doWork
 {
 	cd $rootPath
 
 	#检查当前工作目录
-	(f_checkDir $rootPath)
+	(f_file_list $rootPath)
 
 	'f_selTarget'
 
 	#校验目标路径
-	(f_checkTagetIsAviliable $targetName)
+	(f_checkFolderIsAviliable $targetName)
 	isTagetOk=$?
 
 	if [[ $isTagetOk = 1 ]]; then
@@ -96,7 +65,7 @@ function doWork
 		cd $targetName
 		
 		#检查git status
-		(f_checkGitStatus)
+		(f_git_check_status)
 		isGoOn=$?
 
 		if [[ $isGoOn = 1 ]]; then
@@ -127,5 +96,7 @@ function doWork
 
 
 #干
+(f_echo "$title")
+
 (doWork)
 

@@ -2,75 +2,46 @@
 
 #私有pod提交
 
-echo " ************************** 私有pod提交 ******************************"
+title=" ************************** 私有pod提交 ******************************" 
 
-arrowFlag=" \n ---->"
+function f_dowork
+{
+	local rootPath="$path_siyuan_lib"
 
-rootPath="$path_siyuan_lib"
+	(f_file_list $rootPath)
 
-echo " $arrowFlag 当前根目录为"
-echo " $arrowFlag $rootPath"
+	(f_echo "请输入目标(如:TNShareSDK) :" )
+	read ProjectName
 
-cd $rootPath
+	targetPath="$rootPath/$ProjectName"
+	filePodspec="$targetPath$ProjectName.podspec"
 
-echo " $arrowFlag 当前目录文件有 "
-ls
-
-echo " $arrowFlag "
-read -p " 请输入目标(如:TNShareSDK) : " ProjectName
-
-targetPath="$rootPath/$ProjectName/"
-
-cd $targetPath
-
-filePodspec='$ProjectName.podspec'
-
-if [[ -d $targetPath ]]; then
-	#statements
-	echo " $arrowFlag 目录存在 :"
-
-	ls
-
-	echo " $arrowFlag 查看git 状态"
-	git status
-
-	echo " $arrowFlag "
-	read -p " 请确认git status，是否继续[y/n] :"
-
-	echo " $arrowFlag "
-	read -p " 请确认已经更新podspec版本号[y/n] :" hasUpdatePodSpec
-
-	if [[ 'y' = $hasUpdatePodSpec || '' = $hasUpdatePodSpec ]]; then
-		#statements
-
-		echo " $arrowFlag 当前tag 有 :"
-		git tag 
-
-		read -p "是否需要更新 git tag ？？？[y/n] ：" shouldUpdateTag
-
-		if [[ 'y' = $shouldUpdateTag]]; then
-
-			echo " $arrowFlag "
-			read -p " 请输入git tag 版本号 : " gitTagVertion
-
-			echo " $arrowFlag 更新git tag 到 $gitTagVertion"
-			git tag -a $gitTagVertion -m"$ProjectName - tag $gitTagVertion "
+	if [[ -d $targetPath ]]; then
 		
-			echo " $arrowFlag  tag push "
-			git push origin --tags 
+		(f_checkFolderIsAviliable $targetPath)
 
-		fi		
+		(f_git_check_status $targetPath)
 
-		echo " $arrowFlag "
-		read -p " 当前 $ProjectName，是否进行 pod push [y/n]:" isPodPush 
-		if [[ 'y' = $isPodPush || '' = $isPodPush ]]; then
-			#statements --verbose
-			pod repo push Syswin $filePodspec --use-libraries --allow-warnings 
+		(f_echo " 请确认已经更新podspec版本号[y/n] :")
+		read hasUpdatePodSpec
+
+		if [[ 'y' = $hasUpdatePodSpec || '' = $hasUpdatePodSpec ]]; then
+			#statements
+
+			(f_git_tag_list $targetPath)
+
+			(f_git_tag_update $targetPath)
+
+			(f_git_push "Syswin" $filePodspec)
+
 		fi
 
+	else
+		echo '--->路径不存在'
 	fi
+}
 
-else
-	echo '--->路径不存在'
-fi
 
+(f_echo "$title")
+
+'f_dowork'

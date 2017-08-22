@@ -1,4 +1,4 @@
-#!/bin/sh 
+#! /bin/sh 
 function f_input
 {
 	(f_echo "请输入:")

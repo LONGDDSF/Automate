@@ -1,0 +1,35 @@
+#! bin/bash
+
+#git tag版本list
+#$1 - 路径
+function f_git_tag_list ()
+{
+	cd $1
+
+	(f_echo " $arrowFlag 当前tag 有 :")
+
+	(git tag)
+}
+
+
+#更新tag
+#$1 - 路径
+function f_git_tag_update ()
+{
+	cd $1
+
+	read -p "是否需要更新 git tag ？？？[y/n] ：" shouldUpdateTag
+
+	if [[ 'y' = $shouldUpdateTag ]] ; then
+
+				echo " $arrowFlag "
+				read -p " 请输入git tag 版本号 : " gitTagVertion
+
+				echo " $arrowFlag 更新git tag 到 $gitTagVertion"
+				(git tag -a $gitTagVertion -m"$ProjectName - tag $gitTagVertion ")
+			
+				echo " $arrowFlag  tag push "
+				(git push origin --tags )
+
+	fi		
+}

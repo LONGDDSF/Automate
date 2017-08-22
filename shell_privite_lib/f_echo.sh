@@ -1,6 +1,6 @@
 #!/bin/sh 
 
-flagArrow=" --- >"
+flagArrow=" \n --- >"
 
 function f_echo ()
 {

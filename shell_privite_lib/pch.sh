@@ -1,4 +1,4 @@
-#!bin/sh
+#! bin/sh
 
 # path=$(cd 'dirname $0'; pwd)
 
@@ -14,5 +14,7 @@ source $path/f_input.sh
 
 source $path/file_check.sh
 
-
-
+source $path/f_git_check_status.sh
+source $path/f_git_stash.sh
+source $path/f_git_tag.sh
+source $path/f_git_push.sh
