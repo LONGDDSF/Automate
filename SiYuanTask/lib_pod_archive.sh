@@ -19,33 +19,6 @@ function f_selTarget
 	echo $targetName
 }
 
-# function f_checkTagetIsAviliable ()
-# {
-# 	path=$1
-
-# 	(f_echo "检测文件路径：" )
-# 	(f_echo "$path")
-
-# 	if [[ -d $path ]]; then
-# 			#statements
-# 			function f_list_files
-# 			{
-# 				(f_echo "目录存在，当前目录文件有 :")
-			
-# 				tree -L 1 $path
-# 			}
-			
-# 			'f_list_files'
-
-# 			return 1	
-# 	else
-
-# 			(f_echo "路径不存在")
-			
-# 			return 0
-# 	fi	
-# }
-
 function doWork
 {
 	cd $rootPath
@@ -63,24 +36,31 @@ function doWork
 		#statements
 
 		cd $targetName
-		
+
 		#检查git status
-		(f_git_check_status)
+		(f_git_check_status )
 		isGoOn=$?
 
 		if [[ $isGoOn = 1 ]]; then
 			#statements
 
-				'f_git_stash'
+				echo `pwd`
+
+				(f_git_stash)
+
+				(f_privite_repo_cache_clean)
 
 				(f_echo '\n 开始打包 .....')
 
 				podSpecName=$targetName.podspec
 
-				pod package $podSpecName --no-mangle --spec-sources=http://172.28.6.24:8080/syswin_pod_spec,https://github.com/CocoaPods/Specs.git --exclude-deps --force
-		
-				(f_echo "打包结束 。。。。")
+				#当前pod要使用源码
 
+				"${targetName}_use_code"=1
+				eval "${targetName}_use_code=1" \
+				pod package $podSpecName --no-mangle --spec-sources=http://172.28.6.24:8080/syswin_pod_spec, https://github.com/CocoaPods/Specs.git --exclude-deps --force
+		
+				(f_echo "打包结束 。。。。$podSpecName ")
 
 				sleep 3
 				open .

@@ -3,10 +3,6 @@
 echo " \n
 		**************************** 私有pod库工程，pod update ***********************"
 
-
-#配置项目路径
-# ="/Users/fiend/Documents/toonProject/toonios/Toon"
-
 rootPath="$path_siyuan_lib"
 
 arrowFlag="\n ----> "
@@ -67,12 +63,13 @@ function f_local_repo_update()
 
 	if [[ 'y' = $isUpdate || '' = $isUpdate ]]; then
 
+		(f_privite_repo_cache_clean)
+
 		echo "$arrowFlag 更新本地repo - Syswin"
 		pod repo update Syswin
 
 		echo "$arrowFlag 更新本地repo - 6-syswin_pod_spec"
 		pod repo update 6-syswin_pod_spec
-
 	fi
 }
 
@@ -166,13 +163,24 @@ function doWork
 
 					cd Example
 
+					(f_echo "当前库，使用源码or静态库[1.源码 2.静态库]：：")
+					read isYuanMa
 					echo '\n ---->pod update \n'
-					pod update --no-repo-update --project-directory=
+					if [[ $isYuanMa -eq 2 ]]; then
+						#statements
+						pod update --no-repo-update
+					fi
 
+					if [[ $isYuanMa -eq 1 ]]; then
+						#statements
+						eval "${targetName}_use_code=1" \
+						pod update --no-repo-update
+					fi
+			
 					# echo '\n pod install \n'
 					# pod install
 					
-					echo '\n 打开工程'
+					echo "\n 打开工程 $targetName"
 					WorkSpace=$targetName.xcworkspace
 					open $WorkSpace
 

@@ -12,6 +12,7 @@ case "$ProjectPath" in
 	
 	'1' )
 	ProjectPath="$path_toon"
+	workspaceName='Toon.xcworkspace'
 		;;
 esac
 
@@ -45,9 +46,10 @@ if [[ -d $ProjectPath ]]; then
 
 		if [[ 'y' = $shouldGo1 || '' = $shouldGo1 ]]; then
 			#statemente
-
+			ls
 			echo " $arrowFlag checkout Podfile.lock"
-			git checkout Podfile.lock
+			
+			rm -rf Podfile.lock 
 
 			echo " $arrowFlag "
 			read -p "将修改stash，是否继续[y/n]:" shouldGo2
@@ -76,8 +78,22 @@ if [[ -d $ProjectPath ]]; then
 					# echo '\n pod install \n'
 					# pod install
 
+					(f_echo "已经更新完毕")
+
+					(f_echo "是否自动build")
+					read shouldBuild
+
+					if [[ 'y' = $shouldBuild || '' = $shouldBuild ]]; then
+						#statements
+
+						xcodebuild -workspace Toon.xcworkspace -scheme Toon -sdk iphonesimulator10.3 -configuration debug
+					fi
+
+
+					sleep 3
+					
 					echo " $arrowFlag  打开工程 "
-					open Toon.xcworkspace
+					open *.xcworkspace
 
 				fi
 			fi

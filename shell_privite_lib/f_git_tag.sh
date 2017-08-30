@@ -1,4 +1,4 @@
-#! bin/bash
+#!/bin/bash
 
 #git tag版本list
 #$1 - 路径
@@ -22,14 +22,17 @@ function f_git_tag_update ()
 
 	if [[ 'y' = $shouldUpdateTag ]] ; then
 
-				echo " $arrowFlag "
-				read -p " 请输入git tag 版本号 : " gitTagVertion
+				(f_echo " 请输入git tag 版本号 : " )
 
-				echo " $arrowFlag 更新git tag 到 $gitTagVertion"
+				read gitTagVertion
+
+				(f_echo " 更新git tag 到 $gitTagVertion")
+
 				(git tag -a $gitTagVertion -m"$ProjectName - tag $gitTagVertion ")
-			
-				echo " $arrowFlag  tag push "
-				(git push origin --tags )
+		
+				(f_echo " tag push ")
+
+				(git push origin --tags)
 
 	fi		
 }

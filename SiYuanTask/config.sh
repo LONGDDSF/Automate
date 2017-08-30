@@ -1,10 +1,10 @@
 #!bin/sh
 
 #私有pod库根目录
-path_siyuan_lib="/Users/fiend/Documents/Siyuan/Libs"
+readonly path_siyuan_lib="/Users/syswin/Documents/Siyuan/Libs"
 
 #toon项目根目录
-path_toon="/Users/fiend/Documents/toonProject/toonios/Toon"
+readonly path_toon="/Users/syswin/Documents/Siyuan/ToonProject/toonios/Toon"
 
 # export "&path_siyuan_lib"
 # export "$path_toon"

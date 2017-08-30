@@ -1,0 +1,1 @@
+pod repo push Syswin *.podspec --allow-warnings --verbose --use-libraries

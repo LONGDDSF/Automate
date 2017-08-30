@@ -14,7 +14,7 @@ function f_dowork
 	read ProjectName
 
 	targetPath="$rootPath/$ProjectName"
-	filePodspec="$targetPath$ProjectName.podspec"
+	filePodspec="$targetPath/$ProjectName.podspec"
 
 	if [[ -d $targetPath ]]; then
 		
@@ -32,7 +32,7 @@ function f_dowork
 
 			(f_git_tag_update $targetPath)
 
-			(f_git_push "Syswin" $filePodspec)
+			(f_git_push $filePodspec)
 
 		fi
 

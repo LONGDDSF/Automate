@@ -3,8 +3,6 @@
 function f_dir_list_and_rmdir ()
 {
 	path=$1
-	cd "$path"
-	allDir=$(ls "$path/")
 
 	for file in allDir ; do
 		
