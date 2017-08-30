@@ -14,48 +14,48 @@ function f_pod_cache_clean ()
 function f_privite_repo_cache_clean
 {
 
-(f_echo "是否清理所有私有pod cache？？？[y/n]")
+	(f_echo "是否清理所有私有pod cache？？？[y/n]")
 
-read shouldPodCacheClean
+	read shouldPodCacheClean
 
-if [[ 'y' = $shouldPodCacheClean || '' = $shouldPodCacheClean ]]; then
-	#statements
-	(f_echo "清除所有privite pod cache")
+	if [[ 'y' = $shouldPodCacheClean || '' = $shouldPodCacheClean ]]; then
+		#statements
+		(f_echo "清除所有privite pod cache")
 
-	#找到所有的privite repo
+		#找到所有的privite repo
 
-	pathCurrent=`pwd`
+		pathCurrent=`pwd`
 
-	cd
-	rootPath=`pwd`
+		cd
+		rootPath=`pwd`
 
-	echo "rootPath --> $rootPath"
+		echo "rootPath --> $rootPath"
 
-	pathCocoaPods="${rootPath}/.cocoapods/repos"
+		pathCocoaPods="${rootPath}/.cocoapods/repos"
 
-	echo ""
-	cd $pathCocoaPods
+		echo ""
+		cd $pathCocoaPods
 
-	for repoName in `ls`; do
-	#statements
-	echo "find a repo --> $repoName"
+		for repoName in `ls`; do
+			#statements
+			echo "find a repo --> $repoName"
 
-	repoPath="${pathCocoaPods}/${repoName}"
+			repoPath="${pathCocoaPods}/${repoName}"
 
-	if [[ -d $repoPath && "$repoName" != 'master' ]]; then
-	#statements
+			if [[ -d $repoPath && "$repoName" != 'master' ]]; then
+				#statements
 
-	echo "找到私有repo ---> $repoName"
+				echo "找到私有repo ---> $repoName"
 
-	(f_pod_cache_clean $repoPath)
+				(f_pod_cache_clean $repoPath)
+			fi
+
+		done
+
+		cd "$pathCurrent"
+
+		echo "done！！！！ privite repo pod cache clean"
 	fi
-
-	done
-
-	cd "$pathCurrent"
-
-	echo "done！！！！ privite repo pod cache clean"
-fi
 
 }
 

@@ -55,9 +55,7 @@ function doWork
 				podSpecName=$targetName.podspec
 
 				#当前pod要使用源码
-
-				"${targetName}_use_code"=1
-				eval "${targetName}_use_code=1" \
+				"${targetName}_use_code"=1 \
 				pod package $podSpecName --no-mangle --spec-sources=http://172.28.6.24:8080/syswin_pod_spec, https://github.com/CocoaPods/Specs.git --exclude-deps --force
 		
 				(f_echo "打包结束 。。。。$podSpecName ")
