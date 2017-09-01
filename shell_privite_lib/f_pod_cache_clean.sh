@@ -1,11 +1,13 @@
 #!/bin/sh
 
+title="**************** 清除所有 privite pod cache ****************"
+
 function f_pod_cache_clean ()
 {
 	for podName in $`ls $1` ; do
 		#statements
 	echo "要清理的pod ---> ${podName}"
-    (pod cache clean ${podName} --all)
+    pod cache clean ${podName} --all
 
 	done
 }

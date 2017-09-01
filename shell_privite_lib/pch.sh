@@ -20,3 +20,5 @@ source $path/f_git_tag.sh
 source $path/f_git_push.sh
 
 source $path/f_pod_cache_clean.sh
+source $path/f_pod_update.sh
+source $path/f_pod_repos_update.sh

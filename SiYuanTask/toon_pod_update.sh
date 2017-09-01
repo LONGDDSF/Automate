@@ -32,11 +32,7 @@ if [[ -d $ProjectPath ]]; then
 
 	if [[ 'y' = $isGo || '' = $isGo ]]; then
 
-		echo " $arrowFlag 更新本地repo - Syswin "
-		pod repo update Syswin
-
-		echo " $arrowFlag 更新本地repo - 6-syswin_pod_spec "
-		pod repo update 6-syswin_pod_spec
+		(f_privite_repos_update)
 
 		echo " $arrowFlag 查看当前Git 状态 "
 		git status
@@ -49,7 +45,7 @@ if [[ -d $ProjectPath ]]; then
 			ls
 			echo " $arrowFlag checkout Podfile.lock"
 			
-			rm -rf Podfile.lock 
+			git checkout Podfile.lock 
 
 			echo " $arrowFlag "
 			read -p "将修改stash，是否继续[y/n]:" shouldGo2
@@ -63,6 +59,8 @@ if [[ -d $ProjectPath ]]; then
 				echo " $arrowFlag 查看当前Git 状态 "
 				git status
 
+				rm -rf Pods/*
+
 				echo " $arrowFlag "
 				read -p "Xcode是否已经关闭 [y/n]:" isClose
 
@@ -72,11 +70,9 @@ if [[ -d $ProjectPath ]]; then
 					echo " $arrowFlag 更新Git，pull "
 					git pull
 
-					echo " $arrowFlag pod update "
-					pod update --no-repo-update 
+					(f_privite_repo_cache_clean)
 
-					# echo '\n pod install \n'
-					# pod install
+					(f_pod_update)
 
 					(f_echo "已经更新完毕")
 
@@ -86,7 +82,7 @@ if [[ -d $ProjectPath ]]; then
 					if [[ 'y' = $shouldBuild || '' = $shouldBuild ]]; then
 						#statements
 
-						xcodebuild -workspace Toon.xcworkspace -scheme Toon -sdk iphonesimulator10.3 -configuration debug
+						xcodebuild -workspace *.xcworkspace -scheme Toon -sdk iphonesimulator10.3 -configuration debug
 					fi
 
 

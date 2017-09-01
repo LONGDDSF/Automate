@@ -10,11 +10,11 @@ function f_pod_cache_clean
 
 }
 
-#pod update
-function f_pod_update
-{
+# #pod update
+# function f_pod_update
+# {
 
-}
+# }
 
 #project环境配置
 function f_project_config
