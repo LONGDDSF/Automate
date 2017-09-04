@@ -3,10 +3,6 @@
 title=" \n
 		**************************** 私有库，CocoPods-package 打包 ***********************"
 
-
-#配置项目路径
-# ="/Users/fiend/Documents/toonProject/toonios/Toon"
-
 #所有私有库的根目录
 rootPath="$path_siyuan_lib"
 
@@ -38,7 +34,7 @@ function doWork
 		cd $targetName
 
 		#检查git status
-		(f_git_check_status )
+		(f_git_check_status $rootPath/$targetName)
 		isGoOn=$?
 
 		if [[ $isGoOn = 1 ]]; then
@@ -46,19 +42,22 @@ function doWork
 
 				echo `pwd`
 
-				(f_git_stash)
+				(f_git_stash $rootPath/$targetName)
 
 				(f_privite_repo_cache_clean)
 
-				(f_echo '\n 开始打包 .....')
+				(f_echo '开始打包 .....')
 
 				podSpecName=$targetName.podspec
 
 				#当前pod要使用源码
-				"${targetName}_use_code"=1 \
-				pod package $podSpecName --no-mangle --spec-sources=http://172.28.6.24:8080/syswin_pod_spec, https://github.com/CocoaPods/Specs.git --exclude-deps --force
+				eval "${targetName}_use_code=1" \
+				pod package $podSpecName --no-mangle --exclude-deps --force \
+				--spec-sources=http://172.28.6.24:8080/syswin_pod_spec,https://github.com/CocoaPods/Specs.git
 		
 				(f_echo "打包结束 。。。。$podSpecName ")
+
+
 
 				sleep 3
 				open .
@@ -66,7 +65,7 @@ function doWork
 
 	else
 
-		echo "$arrowFlag 请重新选择目标"
+		(f_echo "请重新选择目标...")
 
 		'doWork'
 	fi

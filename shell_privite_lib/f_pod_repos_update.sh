@@ -1,6 +1,6 @@
 #！/bin/sh
 
-title="***************** all priviete repo update ***********"
+title="***************** all private repo update ***********"
 
 function f_privite_repos_update
 {

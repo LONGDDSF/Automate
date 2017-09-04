@@ -1,0 +1,1 @@
+TNChooseFeed_use_code=1 pod package *.podspec --no-mangle --spec-sources=http://172.28.6.24:8080/syswin_pod_spec,https://github.com/CocoaPods/Specs.git --exclude-deps --force
