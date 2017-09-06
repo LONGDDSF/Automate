@@ -11,15 +11,15 @@ function f_doWork
 	(f_echo "思源企业 - toon - ios版 - 名片模块 - 陈冬冬 - 任务指令列表")
 
 	local taskGroup="[
-				1、toon 项目 ，pod update
+		1、toon 项目 ，pod update
 
-				2、私有pod库 ， pod update
-				
-				3、私有pod库 ， pod push
-				
-				4、私有pod库 ， 打包
+		2、私有pod库 ， pod update
+					
+		3、私有pod库 ， pod push
+					
+		4、私有pod库 ， 打包
 
-				]"
+					]"
 
 	(f_echo "$taskGroup")
 

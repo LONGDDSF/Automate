@@ -10,8 +10,19 @@ function f_sel_source
 
 	if [[ $sourceType = 2 ]]; then
 		#statements
+		(f_echo "当前 --- > 源码")
 		source='use_code=1'
+	else
+		(f_echo "当前 --- > framework")
+
 	fi
+}
+
+function f_other_enval
+{
+	(f_echo "请输入其他自定义环境变量，（如：TNShareSDK_use_code=1）：")
+
+	read inputContent
 }
 
 # #$1--某一个私有pod库的名字
@@ -24,12 +35,7 @@ function f_pod_update ()
 {
 	f_sel_source
 
-	if [[ -z $source ]]; then
-		#statements
-        (f_echo "使用静态库 $source")
-		pod update --no-repo-update
-	else
-        (f_echo "使用源码 $source")
-		eval $source pod update --no-repo-update
-	fi
+	f_other_enval
+
+	eval $source  eval $inputContent pod update --no-repo-update
 }
