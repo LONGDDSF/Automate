@@ -163,6 +163,10 @@ function doWork
 
 					cd Example
 
+					rm -rf Pods/
+
+					rm -rf Podfile.lock
+
 					(f_echo "当前库，使用源码or静态库[1.源码 2.静态库]：：")
 					read isYuanMa
 					echo '\n ---->pod update \n'
