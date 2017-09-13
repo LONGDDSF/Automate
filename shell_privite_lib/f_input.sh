@@ -1,7 +1,13 @@
 #! /bin/sh 
-function f_input
-{
-	(f_echo "请输入:")
+function f_input ()
+{	
+	alertMsg="请输入"
+
+	if [[ -n $1 ]]; then
+		alertMsg=$1
+	fi
+	
+	(f_echo "$alertMsg")
 	
 	read taskID
 

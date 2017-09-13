@@ -1,8 +1,9 @@
 #!/bin/sh 
 
-flagArrow=" \n --- >"
+flagArrow=" \n ---> ʘ‿ʘ "
 
 function f_echo ()
 {
-	echo "$flagArrow $1"
+	
+	echo "$flagArrow`date "+%Y-%m-%d %H:%M:%S"` ʘ‿ʘ $1"
 }

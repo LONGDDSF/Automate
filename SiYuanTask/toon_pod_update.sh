@@ -16,58 +16,51 @@ case "$ProjectPath" in
 		;;
 esac
 
+f_checkFolderIsAviliable $ProjectPath
 
-if [[ -d $ProjectPath ]]; then
+if [[ $? > 0 ]]; then
 	#statements
-	echo " $arrowFlag 目录存在 :"
-	$ProjectPath
-
+	
 	cd $ProjectPath
 
-	echo " $arrowFlag 当前目录文件有:"
-	ls
-
-	echo " $arrowFlag "
 	read -p '是否继续 [y/n] :' isGo
 
 	if [[ 'y' = $isGo || '' = $isGo ]]; then
 
 		(f_privite_repos_update)
 
-		echo " $arrowFlag 查看当前Git 状态 "
-		git status
+		(f_git_check_status $ProjectPath)
 
-		echo " $arrowFlag "
-		read -p "是否继续[y/n]:" shouldGo1
+		(f_echo " 是否继续[y/n]:")
+		read shouldGo1
 
 		if [[ 'y' = $shouldGo1 || '' = $shouldGo1 ]]; then
 			#statemente
-			ls
-			echo " $arrowFlag checkout Podfile.lock"
+
+			(f_echo "checkout Podfile.lock")
 			
 			git checkout Podfile.lock 
 
-			echo " $arrowFlag "
-			read -p "将修改stash，是否继续[y/n]:" shouldGo2
+			(f_echo "将修改stash，是否继续[y/n]:")
+			read shouldGo2
 
 			if [[ 'y' = $shouldGo2 || '' = $shouldGo2 ]]; then
 				#statements
 
-				echo " $arrowFlag 保存更改都stash "
-				git stash
+				(f_git_stash $ProjectPath)
 
-				echo " $arrowFlag 查看当前Git 状态 "
-				git status
+				(f_git_check_status $ProjectPath)
 
+				(f_echo "移除Pods/*")
 				rm -rf Pods/*
 
-				echo " $arrowFlag "
-				read -p "Xcode是否已经关闭 [y/n]:" isClose
+				(f_echo "Xcode是否已经关闭 [y/n]:")
+				read isClose
 
 				if [[ 'y' = $isClose || '' = $isClose ]]; then
 					#statements
 
-					echo " $arrowFlag 更新Git，pull "
+					(f_echo "更新Git，pull")
 					git pull
 
 					(f_privite_repo_cache_clean)
@@ -88,15 +81,12 @@ if [[ -d $ProjectPath ]]; then
 
 					sleep 3
 					
-					echo " $arrowFlag  打开工程 "
+					(f_echo "打开工程 *** $ProjectPath ")
 					open *.xcworkspace
 
 				fi
 			fi
 		fi
 	fi
-
-else
-	echo " $arrowFlag 路径不存在 "
 fi
 

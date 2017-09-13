@@ -3,7 +3,7 @@
 function f_checkFolderIsAviliable ()
 {
 
-	echo "查看文件是否存在，路径 == $1 *****"
+	(f_echo "查看文件是否存在，路径 == $1 *****")
 
 	p1=$1
 
@@ -16,7 +16,7 @@ function f_checkFolderIsAviliable ()
 			return 1	
 	else
 
-			echo "$arrowFlag 路径不存在"
+			(f_echo "路径不存在")
 			
 			return 0
 	fi	

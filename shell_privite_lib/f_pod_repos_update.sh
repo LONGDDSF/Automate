@@ -19,23 +19,22 @@ function f_privite_repos_update
 		cd
 		rootPath=`pwd`
 
-		echo "rootPath --> $rootPath"
+		(f_echo "rootPath --> $rootPath")
 
 		pathCocoaPods="${rootPath}/.cocoapods/repos"
 
-		echo ""
 		cd $pathCocoaPods
 
 		for repoName in `ls`; do
 			#statements
-			echo "find a repo --> $repoName"
+			(f_echo "find a repo --> $repoName")
 
 			repoPath="${pathCocoaPods}/${repoName}"
 
 			if [[ -d $repoPath && "$repoName" != 'master' ]]; then
 				#statements
 
-				echo "找到私有repo ---> $repoName"
+				(f_echo "找到私有repo ---> $repoName")
 
 				pod repo update $repoName	
 			fi
@@ -44,6 +43,6 @@ function f_privite_repos_update
 
 		cd "$pathCurrent"
 
-		echo " done！！！！ all privite repo has updated"
+		(f_echo " done！！！！ all privite repo has updated")
 	fi
 }

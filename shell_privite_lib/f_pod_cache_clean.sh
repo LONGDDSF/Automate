@@ -39,14 +39,14 @@ function f_privite_repo_cache_clean
 
 		for repoName in `ls`; do
 			#statements
-			echo "find a repo --> $repoName"
+			(f_echo "find a repo --> $repoName")
 
 			repoPath="${pathCocoaPods}/${repoName}"
 
 			if [[ -d $repoPath && "$repoName" != 'master' ]]; then
 				#statements
 
-				echo "find a privite repo ---> $repoName"
+				(f_echo "find a privite repo ---> $repoName")
 
 				(f_pod_cache_clean $repoPath)
 			fi
@@ -55,7 +55,7 @@ function f_privite_repo_cache_clean
 
 		cd "$pathCurrent"
 
-		echo "done！！！！ privite repo pod cache clean"
+		(f_echo "done！！！！ privite repo pod cache clean")
 	fi
 
 }

@@ -1,7 +1,7 @@
 
-#思源ios项目常用的自动化程序
+#ios项目常用的自动化程序
 
-#shell_privite_lib - 是shell私有库，不需要改动
+#shell_privite_lib - 是个人写的shell私有库，不需要改动
 
 #SiYuanTask - 是常用自动化程序的实现源码
 
@@ -12,5 +12,5 @@
 
 	2、如果mac电脑上未安装tree命令，请在终端使用brew install tree进行安装
 	
-	3、终端运行 sh Task.sh
+	3、到本目录下，终端运行 sh Task.sh
 

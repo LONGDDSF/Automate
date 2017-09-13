@@ -57,8 +57,6 @@ function doWork
 		
 				(f_echo "打包结束 。。。。$podSpecName ")
 
-
-
 				sleep 3
 				open .
 		fi

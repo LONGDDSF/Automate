@@ -4,6 +4,8 @@ source ./shell_privite_lib/pch.sh
 
 shellPath="./SiYuanTask"
 
+shellPrivateLibPath="./shell_privite_lib"
+
 function f_doWork
 {
 	(f_echo)
@@ -11,6 +13,7 @@ function f_doWork
 	(f_echo "思源企业 - toon - ios版 - 名片模块 - 陈冬冬 - 任务指令列表")
 
 	local taskGroup="[
+	
 		1、toon 项目 ，pod update
 
 		2、私有pod库 ， pod update
@@ -18,6 +21,10 @@ function f_doWork
 		3、私有pod库 ， pod push
 					
 		4、私有pod库 ， 打包
+
+		5、清除私有repo相关库cache
+
+		6、私有repo update
 
 					]"
 
@@ -30,19 +37,26 @@ function f_doWork
 	case $taskID in
 		
 		'1' )
-		source $shellPath/toon_pod_update.sh
+			source $shellPath/toon_pod_update.sh
 			;;
 
 		'2' )
-		source $shellPath/lib_pod_update.sh
+			source $shellPath/lib_pod_update.sh
 			;;
 
 		'3' )
-		source $shellPath/lib_pod_push.sh
+			source $shellPath/lib_pod_push.sh
 			;;
 
 		'4' )
-		source $shellPath/lib_pod_archive.sh
+			source $shellPath/lib_pod_archive.sh
+			;;
+		
+		'5' )
+			'f_privite_repo_cache_clean'
+			;;
+		'6' )
+			'f_privite_repos_update'
 			;;
 	esac
 

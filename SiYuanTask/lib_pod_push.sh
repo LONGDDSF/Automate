@@ -37,7 +37,7 @@ function f_dowork
 		fi
 
 	else
-		echo '--->路径不存在'
+		(f_echo '--->路径不存在')
 	fi
 }
 

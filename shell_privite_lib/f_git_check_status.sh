@@ -2,6 +2,8 @@
 
 function f_git_check_status ()
 {
+	pp=`pwd`
+
 	cd $1
 	(f_echo "查看当前Git 状态 :")
 	 
@@ -15,4 +17,6 @@ function f_git_check_status ()
 	else
 		return 0
 	fi
+
+	cd $pp
 }
