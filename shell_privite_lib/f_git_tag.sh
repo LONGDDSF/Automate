@@ -1,4 +1,4 @@
-#!/bin/bash
+git #!/bin/bash
 
 #git tag版本list
 #$1 - 路径

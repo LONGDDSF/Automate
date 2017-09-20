@@ -26,6 +26,8 @@ function f_doWork
 
 		6、私有repo update
 
+		7、退出
+
 					]"
 
 	(f_echo "$taskGroup")
@@ -57,6 +59,10 @@ function f_doWork
 			;;
 		'6' )
 			'f_privite_repos_update'
+			;;
+
+		'7' )
+			'exit'
 			;;
 	esac
 

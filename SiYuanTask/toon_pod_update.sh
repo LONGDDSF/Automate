@@ -77,11 +77,10 @@ if [[ $? > 0 ]]; then
 
 						xcodebuild -workspace *.xcworkspace -scheme Toon -sdk iphonesimulator10.3 -configuration debug
 					fi
-
-
-					sleep 3
 					
+					sleep 1
 					(f_echo "打开工程 *** $ProjectPath ")
+
 					open *.xcworkspace
 
 				fi
