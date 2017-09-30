@@ -1,4 +1,4 @@
-git #!/bin/bash
+#!/bin/bash
 
 #git tag版本list
 #$1 - 路径
@@ -16,6 +16,8 @@ function f_git_tag_list ()
 #$1 - 路径
 function f_git_tag_update ()
 {
+	(f_git_tag_list $1)
+
 	cd $1
 
 	read -p "是否需要更新 git tag ？？？[y/n] ：" shouldUpdateTag

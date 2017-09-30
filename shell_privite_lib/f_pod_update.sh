@@ -19,7 +19,7 @@ function f_sel_source
 
 function f_other_enval
 {
-	(f_echo "请输入其他自定义环境变量，（如：TNShareSDK_use_code=1）：")
+	(f_echo "请输入其他自定义环境变量: ")
 
 	read inputContent
 }

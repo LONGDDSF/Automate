@@ -1,12 +1,18 @@
-#！/bin/bash
+#!/bin/bash
 
 #路径
 # workPath=
 function f_set_work_path ()
 {
 	if [[ -n $1 ]]; then
-		#statement
+
 		workPath=$1
+	else 
+		(f_echo "请输入项目workspace、project目录"）
+
+		read -p ">" workPath
+
+		(f_set_work_path $workPath)
 	fi
 
 	(f_checkFolderIsAviliable $workPath)
@@ -17,7 +23,7 @@ function f_set_work_type
 {
 	(f_echo "请选择工程类型：{1、workspace 2、project} :")
 
-	read workType
+	read -p ">" workType
 
 	case workType in
 		 '1' )
@@ -31,7 +37,6 @@ function f_set_work_type
 }
 
 #选择scheme or targe
-
 function f_sel_target
 {
 	case workType in
@@ -64,7 +69,7 @@ function f_sel_skd
 
 	(f_echo "请选择sdk:")
 
-	read selSdk
+	read -p ">" selSdk
 
 	(f_echo "你选择的sdk是"）
 
@@ -79,7 +84,7 @@ function f_sel_debug
 
 	(f_echo "默认是debug模式，是否切换：[y/n] ::")
 
-	read isChange
+	read -p ">" isChange
 
 	if [[ 'y' = $isChage || '' = $isChange ]]; then
 		#statements
@@ -91,16 +96,24 @@ function f_sel_debug
 }
 
 #$1 --- path
-fucntion f_do_build ()
+function f_do_build ()
 {	
 	path=$1
 	(f_set_work_path $path)
 
-	(f_set_work_type)
+	if [[ $! == 1 ]]; then
+		#statements
 
-	(f_sel_target)
+		f_set_work_type
 
-	(f_sel_skd)
+		(f_sel_target)
 
-	(f_sel_debug)
+		(f_sel_skd)
+
+		(f_sel_debug)
+
+		echo "workType == $workType"
+
+		echo "debugType == $debugType"
+	fi
 }

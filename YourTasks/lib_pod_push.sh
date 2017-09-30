@@ -6,11 +6,11 @@ title=" ************************** 私有pod提交 *****************************
 
 function f_dowork
 {
-	local rootPath="$path_siyuan_lib"
+	local rootPath="$path_pod_libs"
 
 	(f_file_list $rootPath)
 
-	(f_echo "请输入目标(如:TNShareSDK) :" )
+	(f_echo "请输入私有pod库名称 :" )
 	read ProjectName
 
 	targetPath="$rootPath/$ProjectName"
@@ -26,9 +26,6 @@ function f_dowork
 		read hasUpdatePodSpec
 
 		if [[ 'y' = $hasUpdatePodSpec || '' = $hasUpdatePodSpec ]]; then
-			#statements
-
-			(f_git_tag_list $targetPath)
 
 			(f_git_tag_update $targetPath)
 

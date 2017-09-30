@@ -3,7 +3,7 @@
 echo " \n
 		**************************** 私有pod库工程，pod update ***********************"
 
-rootPath="$path_siyuan_lib"
+rootPath="$path_pod_libs"
 
 arrowFlag="\n ----> "
 
@@ -17,7 +17,7 @@ function f_selTarget
 {	
 	echo "$arrowFlag"
 
-	read -p "请输入目标(如:TNShareSDK) :" targetName
+	read -p "请输入私有pod库名称 :" targetName
 
 	echo $targetName
 }
@@ -151,11 +151,11 @@ function doWork
 				#statements
 
 				'f_git_stash'
+			fi
 
-				echo '\n'
-				read -p '---->Xcode是否已经关闭 [y/n]:' isClose
-
-				if [[ 'y' = $isClose || '' = $isClose ]]; then
+			echo '\n'
+			read -p '---->Xcode是否已经关闭 [y/n]:' isClose
+			if [[ 'y' = $isClose || '' = $isClose ]]; then
 					#statements
 
 					echo '\n ---->更新Git，pull'
@@ -189,7 +189,6 @@ function doWork
 					open $WorkSpace
 
 				fi
-			fi
 		fi
 
 	else

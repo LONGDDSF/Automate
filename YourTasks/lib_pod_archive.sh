@@ -4,13 +4,13 @@ title=" \n
 		**************************** 私有库，CocoPods-package 打包 ***********************"
 
 #所有私有库的根目录
-rootPath="$path_siyuan_lib"
+rootPath="$path_pod_libs"
 
 function f_selTarget
 {	
 	(f_echo)
 
-	read -p "请输入目标(如:TNShareSDK) :" targetName
+	read -p "请输入私有pod库名称 :" targetName
 
 	echo $targetName
 }
@@ -40,12 +40,10 @@ function doWork
 		if [[ $isGoOn = 1 ]]; then
 			#statements
 
-				echo `pwd`
-
 				(f_git_stash $rootPath/$targetName)
 
 				(f_privite_repo_cache_clean)
-
+				
 				(f_echo '开始打包 .....')
 
 				podSpecName=$targetName.podspec
@@ -53,11 +51,12 @@ function doWork
 				#当前pod要使用源码
 				eval "${targetName}_use_code=1" \
 				pod package $podSpecName --no-mangle --exclude-deps --force \
-				--spec-sources=http://172.28.6.24:8080/syswin_pod_spec,https://github.com/CocoaPods/Specs.git
+				--spec-sources=$url_private_repo,$url_cocoapods_repo
 		
 				(f_echo "打包结束 。。。。$podSpecName ")
 
-				sleep 3
+				sleep 1
+
 				open .
 		fi
 

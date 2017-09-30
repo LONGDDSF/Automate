@@ -3,14 +3,16 @@
 
 #shell_privite_lib - 是个人写的shell私有库，不需要改动
 
-#SiYuanTask - 是常用自动化程序的实现源码
+#YourTask - 是常用自动化程序的实现源码
 
 #Task.sh - 是自动化程序入口
 
 #使用流程
-	1、在 SiYuanTask中，修改config文件中的文件路径，改为自己的文件路径
+	1、在 YourTask/config，进行项目的路径配置
 
 	2、如果mac电脑上未安装tree命令，请在终端使用brew install tree进行安装
-	
-	3、到本目录下，终端运行 sh Task.sh
+
+	3、pod打包使用的是pod插件，cocoapods-packager,
+
+	4、到本目录下，终端运行 sh Task.sh
 

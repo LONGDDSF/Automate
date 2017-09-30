@@ -9,7 +9,8 @@ function f_git_check_status ()
 	 
 	(git status)
 
-	read -p "请确认git status ,是否继续 [y/n] :" isGitStatusOk
+	(f_echo "请确认git status ,是否继续 [y/n] :")
+	read -p ">" isGitStatusOk
 		
 	if [[ 'y' = $isGitStatusOk || '' = $isGitStatusOk ]]; then
 

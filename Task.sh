@@ -1,8 +1,8 @@
 
-source ./SiYuanTask/config.sh
+source ./YourTasks/config.sh
 source ./shell_privite_lib/pch.sh
 
-shellPath="./SiYuanTask"
+shellPath="./YourTasks"
 
 shellPrivateLibPath="./shell_privite_lib"
 
@@ -10,11 +10,11 @@ function f_doWork
 {
 	(f_echo)
 
-	(f_echo "思源企业 - toon - ios版 - 名片模块 - 陈冬冬 - 任务指令列表")
+	(f_echo "基于私有repo、git管理的任务指令列表")
 
 	local taskGroup="[
 	
-		1、toon 项目 ，pod update
+		1、main项目 ，pod update
 
 		2、私有pod库 ， pod update
 					
@@ -27,7 +27,6 @@ function f_doWork
 		6、私有repo update
 
 		7、退出
-
 					]"
 
 	(f_echo "$taskGroup")
@@ -39,7 +38,7 @@ function f_doWork
 	case $taskID in
 		
 		'1' )
-			source $shellPath/toon_pod_update.sh
+			source $shellPath/main_project_update.sh
 			;;
 
 		'2' )
@@ -57,6 +56,7 @@ function f_doWork
 		'5' )
 			'f_privite_repo_cache_clean'
 			;;
+			
 		'6' )
 			'f_privite_repos_update'
 			;;
