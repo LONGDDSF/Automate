@@ -1,4 +1,4 @@
-#! bin/sh
+#! /bin/sh
 
 # path=$(cd 'dirname $0'; pwd)
 
@@ -23,4 +23,4 @@ source $path/f_pod_cache_clean.sh
 source $path/f_pod_update.sh
 source $path/f_pod_repos_update.sh
 
-# source $path/f_xcode_build.sh
+source $path/f_xcodebuild.sh

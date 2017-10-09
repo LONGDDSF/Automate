@@ -15,19 +15,14 @@ function f_doWork
 	local taskGroup="[
 	
 		1、main项目 ，pod update
-
 		2、私有pod库 ， pod update
-					
 		3、私有pod库 ， pod push
-					
 		4、私有pod库 ， 打包
-
 		5、清除私有repo相关库cache
-
 		6、私有repo update
-
-		7、退出
-					]"
+		7、编译
+		8、退出
+				]"
 
 	(f_echo "$taskGroup")
 
@@ -61,7 +56,11 @@ function f_doWork
 			'f_privite_repos_update'
 			;;
 
-		'7' )
+        '7' )
+            'f_do_build'
+            ;;
+
+		'8' )
 			'exit'
 			;;
 	esac
