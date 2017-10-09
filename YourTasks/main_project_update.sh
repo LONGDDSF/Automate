@@ -1,16 +1,15 @@
 #!/bin/sh 
 
-title =" ************************** Toon工程 pod update ******************************"
+title=" ************************** Toon工程 pod update ******************************"
 
 function f_do_work
 {
 	ProjectPath="$path_main_project"
 
-	f_checkFolderIsAviliable $ProjectPath
+	(f_checkFolderIsAviliable $ProjectPath)
 
 	if [[ $? > 0 ]]; then
-		#statements
-		
+
 		cd $ProjectPath
 
 		read -p '是否继续 [y/n] :' isGo
@@ -40,12 +39,12 @@ function f_do_work
 				fi
 
 				(f_echo "移除所有依赖的库 > Pods/*")
-					rm -rf Pods/*
+				rm -rf Pods/*
 
-					(f_echo "Xcode是否已经关闭 [y/n]:")
-					read isClose
+				(f_echo "Xcode是否已经关闭 [y/n]:")
+				read isClose
 
-					if [[ 'y' = $isClose || '' = $isClose ]]; then
+				if [[ 'y' = $isClose || '' = $isClose ]]; then
 						#statements
 
 						(f_echo "更新Git，pull")
@@ -60,17 +59,17 @@ function f_do_work
 						(f_echo "是否自动build")
 						read shouldBuild
 
-						if [[ 'y' = $shouldBuild || '' = $shouldBuild ]]; then
+						# if [[ 'y' = $shouldBuild || '' = $shouldBuild ]]; then
 
-							#xcodebuild -workspace *.xcworkspace -scheme Toon -sdk iphonesimulator10.3 -configuration debug
-						fi
+						# 	#xcodebuild -workspace *.xcworkspace -scheme Toon -sdk iphonesimulator10.3 -configuration debug
+						# fi
 						
 						sleep 1
 
 						(f_echo "打开工程 *** $ProjectPath ")
 
 						open *.xcworkspace
-					fi
+				fi	
 			fi
 		fi
 	fi
