@@ -11,6 +11,3 @@ readonly url_private_repo=""
 
 #cocoapods
 readonly url_cocoapods_repo=""
-
-# export "&path_siyuan_lib"
-# export "$path_toon"
