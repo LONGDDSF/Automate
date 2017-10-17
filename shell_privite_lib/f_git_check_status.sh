@@ -1,4 +1,4 @@
-#! /bin/bash
+#! /bin/sh 
 
 function f_git_check_status ()
 {
@@ -9,9 +9,11 @@ function f_git_check_status ()
 	 
 	(git status)
 
-	(f_echo "请确认git status ,是否继续 [y/n] :")
-	read -p ">" isGitStatusOk
-		
+	alertMsg="请确认git status ,是否继续 [y/n] :"
+
+	(f_echo $alertMsg)
+	read -p ">" -t 3 isGitStatusOk 
+
 	if [[ 'y' = $isGitStatusOk || '' = $isGitStatusOk ]]; then
 
 		return 1

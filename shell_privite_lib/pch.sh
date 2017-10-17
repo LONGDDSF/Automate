@@ -24,3 +24,5 @@ source $path/f_pod_update.sh
 source $path/f_pod_repos_update.sh
 
 source $path/f_xcodebuild.sh
+
+#shouldAuto=1

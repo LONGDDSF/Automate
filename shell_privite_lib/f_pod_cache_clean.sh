@@ -20,7 +20,9 @@ function f_privite_repo_cache_clean
 {
 	(f_echo "clean all privite pod cache ？？？[y/n]")
 
-	read shouldPodCacheClean
+	shouldPodCacheClean='n'
+
+	read -t 4 shouldPodCacheClean 
 
 	if [[ 'y' = $shouldPodCacheClean || '' = $shouldPodCacheClean ]]; then
 		#statements

@@ -6,7 +6,9 @@ function f_privite_repos_update
 {
 	(f_echo "是否更新 all privite repos？？？[y/n]")
 
-	read shouldRepoUpdate
+	shouldRepoUpdate='y'
+
+	read -t 3 shouldRepoUpdate 
 
 	if [[ 'y' = $shouldRepoUpdate || '' = $shouldRepoUpdate ]]; then
 		#statements

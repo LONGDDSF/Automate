@@ -11,14 +11,17 @@ function f_git_push ()
 
 	(f_echo " 当前 $ProjectName，是否进行 pod push [y/n]:")
 	
-	read isPodPush 
+    isPodPush='y'
+	read -t 5 isPodPush 
 
     if [[ 'y' = $isPodPush || '' = $isPodPush ]] ; then
 	 	#statements --verbose
 
         (f_echo "请选择要推送的repo:::")
 
-        read repoName
+        repoName='Syswin'
+
+        read -t 5 repoName 
 
         pod repo push $repoName $1 --use-libraries --allow-warnings --verbose
     fi

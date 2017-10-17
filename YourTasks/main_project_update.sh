@@ -12,7 +12,9 @@ function f_do_work
 
 		cd $ProjectPath
 
-		read -p '是否继续 [y/n] :' isGo
+		isGo='y'
+
+		read -p '是否继续 [y/n] :' -t 3 isGo 
 
 		if [[ 'y' = $isGo || '' = $isGo ]]; then
 
@@ -21,7 +23,9 @@ function f_do_work
 			(f_git_check_status $ProjectPath)
 
 			(f_echo " 是否继续[y/n]:")
-			read shouldGo1
+
+			shouldGo1='y'
+			read -t 5 shouldGo1 
 
 			if [[ 'y' = $shouldGo1 || '' = $shouldGo1 ]]; then
 				#statemente
@@ -30,8 +34,8 @@ function f_do_work
 				git checkout Podfile.lock 
 
 				(f_echo "将修改stash，是否继续[y/n]:")
-				read shouldGo2
-
+				shouldGo2='n'
+				read -t 3 shouldGo2
 				if [[ 'y' = $shouldGo2 || '' = $shouldGo2 ]]; then
 					#statements
 
@@ -42,7 +46,9 @@ function f_do_work
 				rm -rf Pods/*
 
 				(f_echo "Xcode是否已经关闭 [y/n]:")
-				read isClose
+
+				isClose='y'
+				read -t 3 isClose 
 
 				if [[ 'y' = $isClose || '' = $isClose ]]; then
 						#statements
@@ -57,7 +63,8 @@ function f_do_work
 						(f_echo "已经更新完毕")
 
 						(f_echo "是否自动build")
-						read shouldBuild
+
+						# read shouldBuild
 
 						# if [[ 'y' = $shouldBuild || '' = $shouldBuild ]]; then
 

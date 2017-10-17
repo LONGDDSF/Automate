@@ -20,7 +20,9 @@ function f_git_tag_update ()
 
 	cd $1
 
-	read -p "是否需要更新 git tag ？？？[y/n] ：" shouldUpdateTag
+	shouldUpdateTag='n'
+
+	read -p "是否需要更新 git tag ？？？[y/n] ：" -t 3 shouldUpdateTag 
 
 	if [[ 'y' = $shouldUpdateTag ]] ; then
 
