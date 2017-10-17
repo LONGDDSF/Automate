@@ -1,3 +1,17 @@
+#! /bin/sh
+
+isAutoRun=$1
+
+TIMEOUT=9999999
+
+echo $isAutoRun
+
+if [[ $isAutoRun -eq 1 ]]; then
+	#statements
+	TIMEOUT=2
+fi
+
+############################################
 
 source ./YourTasks/config.sh
 source ./shell_privite_lib/pch.sh

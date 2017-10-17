@@ -14,7 +14,7 @@ function f_do_work
 
 		isGo='y'
 
-		read -p '是否继续 [y/n] :' -t 3 isGo 
+		read -p '是否继续 [y/n] :' -t $TIMEOUT isGo 
 
 		if [[ 'y' = $isGo || '' = $isGo ]]; then
 
@@ -25,7 +25,7 @@ function f_do_work
 			(f_echo " 是否继续[y/n]:")
 
 			shouldGo1='y'
-			read -t 5 shouldGo1 
+			read -t $TIMEOUT shouldGo1 
 
 			if [[ 'y' = $shouldGo1 || '' = $shouldGo1 ]]; then
 				#statemente
@@ -35,7 +35,7 @@ function f_do_work
 
 				(f_echo "将修改stash，是否继续[y/n]:")
 				shouldGo2='n'
-				read -t 3 shouldGo2
+				read -t $TIMEOUT shouldGo2
 				if [[ 'y' = $shouldGo2 || '' = $shouldGo2 ]]; then
 					#statements
 
@@ -48,7 +48,7 @@ function f_do_work
 				(f_echo "Xcode是否已经关闭 [y/n]:")
 
 				isClose='y'
-				read -t 3 isClose 
+				read -t $TIMEOUT isClose 
 
 				if [[ 'y' = $isClose || '' = $isClose ]]; then
 						#statements

@@ -23,7 +23,8 @@ function f_dowork
 		(f_git_check_status $targetPath)
 
 		(f_echo " 请确认已经更新podspec版本号[y/n] :")
-		read hasUpdatePodSpec
+		hasUpdatePodSpec='y'
+		read -t $TIMEOUT hasUpdatePodSpec
 
 		if [[ 'y' = $hasUpdatePodSpec || '' = $hasUpdatePodSpec ]]; then
 

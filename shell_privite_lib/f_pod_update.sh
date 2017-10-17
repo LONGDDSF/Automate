@@ -6,7 +6,7 @@ function f_sel_source
 {
 	(f_echo "使用静态库or源码[1、静态库（默认）2、源码] ：：")
 
-	read -t 3 sourceType
+	read -t $TIMEOUT sourceType
 
 	if [[ $sourceType = 2 ]]; then
 		#statements
@@ -22,7 +22,7 @@ function f_other_enval
 	(f_echo "私人模块，使用静态库or源码[1、静态库（默认）2、源码] ：：")
 
 	priviteSourceType='2'
-	read -t 3 priviteSourceType
+	read -t $TIMEOUT priviteSourceType
 
 	if [[ $priviteSourceType = 2 ]]; then
 		#statements
@@ -38,7 +38,7 @@ function f_other_enval
 
 	(f_echo "请输入其他自定义环境变量: ")
 
-	read -t 5 inputContent 
+	read -t $TIMEOUT inputContent 
 }
 
 # #$1--某一个私有pod库的名字

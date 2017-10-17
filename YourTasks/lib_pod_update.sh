@@ -28,7 +28,7 @@ function f_checkTagetIsAviliable ()
 
 	ExamplePath="$p1/Example"
 
-	echo "ExamplePath =="$ExamplePath
+	echo "ExamplePath == $ExamplePath "
 
 	if [[ -d $ExamplePath ]]; then
 			#statements
@@ -145,7 +145,8 @@ function doWork
 			#statements
 
 			echo '\n'
-			read -p '---->保存working到stash，是否继续[y/n]:' should_Stash
+			should_Stash='n'
+			read -p '---->保存working到stash，是否继续[y/n]:' $TIMEOUT should_Stash
 
 			if [[ 'y' = $should_Stash || '' = $should_Stash ]]; then
 				#statements
@@ -154,7 +155,8 @@ function doWork
 			fi
 
 			echo '\n'
-			read -p '---->Xcode是否已经关闭 [y/n]:' isClose
+			isClose='y'
+			read -p '---->Xcode是否已经关闭 [y/n]:' -t $TIMEOUT isClose
 			if [[ 'y' = $isClose || '' = $isClose ]]; then
 					#statements
 
@@ -168,7 +170,9 @@ function doWork
 					rm -rf Podfile.lock
 
 					(f_echo "当前库，使用源码or静态库[1.源码 2.静态库]：：")
-					read isYuanMa
+					isYuanMa=1
+					read -t $TIMEOUT isYuanMa
+					
 					echo '\n ---->pod update \n'
 					if [[ $isYuanMa -eq 2 ]]; then
 						#statements

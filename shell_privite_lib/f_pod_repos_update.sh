@@ -8,7 +8,7 @@ function f_privite_repos_update
 
 	shouldRepoUpdate='y'
 
-	read -t 3 shouldRepoUpdate 
+	read -t $TIMEOUT shouldRepoUpdate 
 
 	if [[ 'y' = $shouldRepoUpdate || '' = $shouldRepoUpdate ]]; then
 		#statements

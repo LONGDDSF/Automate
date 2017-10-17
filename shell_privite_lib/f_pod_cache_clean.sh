@@ -22,7 +22,7 @@ function f_privite_repo_cache_clean
 
 	shouldPodCacheClean='n'
 
-	read -t 4 shouldPodCacheClean 
+	read -t $TIMEOUT shouldPodCacheClean 
 
 	if [[ 'y' = $shouldPodCacheClean || '' = $shouldPodCacheClean ]]; then
 		#statements

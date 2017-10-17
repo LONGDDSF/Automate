@@ -12,7 +12,7 @@ function f_git_push ()
 	(f_echo " 当前 $ProjectName，是否进行 pod push [y/n]:")
 	
     isPodPush='y'
-	read -t 5 isPodPush 
+	read -t $TIMEOUT isPodPush 
 
     if [[ 'y' = $isPodPush || '' = $isPodPush ]] ; then
 	 	#statements --verbose
@@ -21,7 +21,7 @@ function f_git_push ()
 
         repoName='Syswin'
 
-        read -t 5 repoName 
+        read -t $TIMEOUT repoName 
 
         pod repo push $repoName $1 --use-libraries --allow-warnings --verbose
     fi

@@ -4,8 +4,6 @@
 
 path="./shell_privite_lib"
 
-# echo "$path"
-
 source $path/f_echo.sh
 
 source $path/file_list.sh
@@ -24,5 +22,3 @@ source $path/f_pod_update.sh
 source $path/f_pod_repos_update.sh
 
 source $path/f_xcodebuild.sh
-
-#shouldAuto=1

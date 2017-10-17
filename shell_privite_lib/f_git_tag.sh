@@ -22,9 +22,9 @@ function f_git_tag_update ()
 
 	shouldUpdateTag='n'
 
-	read -p "是否需要更新 git tag ？？？[y/n] ：" -t 3 shouldUpdateTag 
+	read -p "是否需要更新 git tag ？？？[y/n] ：" -t $TIMEOUT shouldUpdateTag 
 
-	if [[ 'y' = $shouldUpdateTag ]] ; then
+	if [[ 'y' = shouldUpdateTag ]] ; then
 
 				(f_echo " 请输入git tag 版本号 : " )
 
