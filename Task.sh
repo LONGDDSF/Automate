@@ -1,8 +1,13 @@
 #! /bin/sh
 
+####################################
+
+# 是否自动编译
+# 1=yes 
+# others=no
 isAutoRun=$1
 
-TIMEOUT=9999999
+TIMEOUT=99999999
 
 echo $isAutoRun
 
@@ -10,6 +15,15 @@ if [[ $isAutoRun -eq 1 ]]; then
 	#statements
 	TIMEOUT=2
 fi
+
+####################################
+
+
+# 是否清除所有Pod Cache
+# 1=yes 
+# others=no
+iaCleanPodCache=$2
+
 
 ############################################
 
