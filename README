@@ -8,19 +8,20 @@
 #Task.sh - 是自动化程序入口
 
 #使用流程
-	1、在 YourTask/config，进行项目的路径配置
 
-	2、如果mac电脑上未安装tree命令，请在终端使用brew install tree进行安装
+1、在 YourTask/config，进行项目的路径配置
 
-	3、pod打包使用的是pod插件，cocoapods-packager,请确认已经安装
+2、如果mac电脑上未安装tree命令，请在终端使用brew install tree进行安装
 
-	4、到本目录下，终端运行 sh Task.sh 
+3、pod打包使用的是pod插件，cocoapods-packager,请确认已经安装
+
+4、到本目录下，终端运行 sh Task.sh 
 	
-	5、添加新功能：
+5、添加新功能：
 	
-      	 sh Task.sh [a] [b]
+   sh Task.sh [a] [b]
 
-	 a=1时，所有命令自动执行，others或不填时为否;
+   a=1时，所有命令自动执行，others或不填时为否;
 
-         b=1时，会自动清除所有pod cache，other或不填时为否.
+   b=1时，会自动清除所有pod cache，other或不填时为否.
 
