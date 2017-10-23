@@ -31,7 +31,7 @@ function f_do_work
 				#statemente
 
 				(f_echo "checkout Podfile.lock")
-				git checkout Podfile.lock 
+				rm Podfile.lock 
 
 				(f_echo "将修改stash，是否继续[y/n]:")
 				shouldGo2='n'

@@ -24,7 +24,7 @@ function f_dowork
 
 		(f_echo " 请确认已经更新podspec版本号[y/n] :")
 		hasUpdatePodSpec='y'
-		read -t $TIMEOUT hasUpdatePodSpec
+		read -t 3 hasUpdatePodSpec
 
 		if [[ 'y' = $hasUpdatePodSpec || '' = $hasUpdatePodSpec ]]; then
 

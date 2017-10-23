@@ -26,7 +26,7 @@ function f_other_enval
 
 	if [[ $priviteSourceType = 2 ]]; then
 		#statements
-		
+		#ToonCommon_use_code=1
 		priviteSource='TNChooseFeed_use_code=1 TNShareSDK_use_code=1 TNCard_use_code=1 TNFrame_use_code=1'
 		
 		(f_echo "私人模块当前 --- > 源码  $priviteSource")
