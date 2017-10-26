@@ -24,18 +24,6 @@ function f_other_enval
 	priviteSourceType='2'
 	read -t $TIMEOUT priviteSourceType
 
-	if [[ $priviteSourceType = 2 ]]; then
-		#statements
-		#ToonCommon_use_code=1
-		priviteSource='TNChooseFeed_use_code=1 TNShareSDK_use_code=1 TNCard_use_code=1 TNFrame_use_code=1'
-		
-		(f_echo "私人模块当前 --- > 源码  $priviteSource")
-
-	else
-		(f_echo "私人模块当前 --- > framework")
-	fi
-
-
 	(f_echo "请输入其他自定义环境变量: ")
 
 	read -t $TIMEOUT inputContent 
@@ -47,11 +35,25 @@ function f_other_enval
 	
 # }
 
+#$1 - 私有变量
+
 function f_pod_update ()
 {
+	allPrivateSource=$@
+
 	f_sel_source
 
 	f_other_enval
 
-	eval $source  eval $inputContent eval $priviteSource pod update --no-repo-update
+    if [[ $priviteSourceType = 2 ]]; then
+
+        (f_echo "私人模块当前 --- > 源码  $allPrivateSource")
+
+        eval $allPrivateSource eval $source eval $inputContent pod update --no-repo-update
+    else
+
+        (f_echo "私人模块当前 --- > framework")
+
+        eval $source eval $inputContent pod update --no-repo-update
+    fi
 }

@@ -58,7 +58,7 @@ function f_do_work
 
 						(f_privite_repo_cache_clean)
 
-						(f_pod_update)
+						(f_pod_update $privitePodSourceParam)
 
 						(f_echo "已经更新完毕")
 

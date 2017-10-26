@@ -77,13 +77,15 @@ function doWork
 
 					if [[ $isYuanMa -eq 2 ]]; then
 						#statements
-						pod update --no-repo-update
+						eval $privitePodSourceParam pod update --no-repo-update
 					fi
 
 					if [[ $isYuanMa -eq 1 ]]; then
 						#statements
+
+						eval $privitePodSourceParam \
 						eval "${targetName}_use_code=1" \
-						pod update --no-repo-update
+                        pod update --no-repo-update
 					fi
 				
 					(f_echo "打开工程 $targetName >>>> ")
