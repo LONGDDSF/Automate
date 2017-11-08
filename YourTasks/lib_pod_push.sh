@@ -30,7 +30,7 @@ function f_dowork
 
 			(f_git_tag_update $targetPath)
 
-			(f_git_push $filePodspec)
+			(f_git_push $filePodspec "$privitePodSourceParam ${ProjectName}_use_code=0")
 
 		fi
 

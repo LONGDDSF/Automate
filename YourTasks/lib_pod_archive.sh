@@ -49,7 +49,7 @@ function doWork
 				podSpecName=$targetName.podspec
 
 				#当前pod要使用源码
-				eval "${targetName}_use_code=1" \
+				eval "${targetName}_use_code=1" eval "$privitePodSourceParam"\
 				pod package $podSpecName --no-mangle --exclude-deps --force \
 				--spec-sources=$url_private_repo,$url_cocoapods_repo
 		

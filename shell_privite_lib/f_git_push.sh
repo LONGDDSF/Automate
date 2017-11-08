@@ -23,6 +23,6 @@ function f_git_push ()
 
         read -t $TIMEOUT repoName 
 
-        pod repo push $repoName $1 --use-libraries --allow-warnings --verbose
+        eval $2 pod repo push $repoName $1 --use-libraries --allow-warnings --verbose
     fi
 }
