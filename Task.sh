@@ -18,14 +18,23 @@ fi
 
 ####################################
 
+# 是否update
+# 1=yes
+# others=no（pod install）
+PodInstall='pod install'
+
+if [[ $2 = 1 ]]; then
+    PodInstall='pod update'
+fi
+
+####################################
 
 # 是否清除所有Pod Cache
-# 1=yes 
+# 1=yes
 # others=no
-iaCleanPodCache=$2
+iaCleanPodCache=$3
 
-
-############################################
+####################################
 
 source ./YourTasks/config.sh
 source ./shell_privite_lib/pch.sh

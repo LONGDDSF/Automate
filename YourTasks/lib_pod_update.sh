@@ -77,7 +77,7 @@ function doWork
 
 					if [[ $isYuanMa -eq 2 ]]; then
 						#statements
-						eval $privitePodSourceParam pod update --no-repo-update
+						eval $privitePodSourceParam $PodInstall --no-repo-update
 					fi
 
 					if [[ $isYuanMa -eq 1 ]]; then
@@ -85,7 +85,7 @@ function doWork
 
 						eval $privitePodSourceParam \
 						eval "${targetName}_use_code=1" \
-                        pod update --no-repo-update
+                        $PodInstall --no-repo-update
 					fi
 				
 					(f_echo "打开工程 $targetName >>>> ")

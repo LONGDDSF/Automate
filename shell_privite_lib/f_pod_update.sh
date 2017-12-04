@@ -49,7 +49,7 @@ function f_pod_update ()
 
         (f_echo "私人模块当前 --- > 源码  $allPrivateSource")
 
-        eval $allPrivateSource eval $source eval $inputContent pod update --no-repo-update
+        eval $allPrivateSource eval $source eval $inputContent $PodInstall --no-repo-update
     else
 
         (f_echo "私人模块当前 --- > framework")
