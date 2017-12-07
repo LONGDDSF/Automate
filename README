@@ -19,9 +19,11 @@
 	
 5、添加新功能：
 	
-   sh Task.sh [a] [b]
+   sh Task.sh [a] [b] [c]
 
    a=1时，所有命令自动执行，others或不填时为否;
 
-   b=1时，会自动清除所有pod cache，other或不填时为否.
+   b=1时，pod更新会使用update，others为 install
+
+   c=1时，会自动清除所有pod cache，other或不填时为否
 

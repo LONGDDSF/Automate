@@ -13,7 +13,7 @@ echo $isAutoRun
 
 if [[ $isAutoRun -eq 1 ]]; then
 	#statements
-	TIMEOUT=1
+	TIMEOUT=0
 fi
 
 ####################################
