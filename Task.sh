@@ -3,7 +3,7 @@
 ####################################
 
 # 是否自动编译
-# 1=yes 
+# 1=yes
 # others=no
 isAutoRun=$1
 
@@ -50,7 +50,7 @@ function f_doWork
 	(f_echo "基于私有repo、git管理的任务指令列表")
 
 	local taskGroup="[
-	
+
 		1、main项目 ，pod update
 		2、私有pod库 ， pod update
 		3、私有pod库 ， pod push
@@ -58,6 +58,7 @@ function f_doWork
 		5、清除私有repo相关库cache
 		6、私有repo update
 		7、编译
+		8、替换pod
 		8、退出
 				]"
 
@@ -68,7 +69,7 @@ function f_doWork
 	read taskID
 
 	case $taskID in
-		
+
 		'1' )
 			source $shellPath/main_project_update.sh
 			;;
@@ -84,11 +85,11 @@ function f_doWork
 		'4' )
 			source $shellPath/lib_pod_archive.sh
 			;;
-		
+
 		'5' )
 			'f_privite_repo_cache_clean'
 			;;
-			
+
 		'6' )
 			'f_privite_repos_update'
 			;;
@@ -106,4 +107,3 @@ function f_doWork
 }
 
 'f_doWork'
-
